@@ -1,0 +1,85 @@
+query Following(
+  $isFollowing: Boolean = true
+  $hasReplies: Boolean = false
+  $activityType: ActivityType
+  $page: Int
+) {
+  Page(page: $page, perPage: 10) {
+    pageInfo {
+      total
+      perPage
+      currentPage
+      lastPage
+      hasNextPage
+    }
+    activities(
+      isFollowing: $isFollowing
+      type: $activityType
+      hasRepliesOrTypeText: $hasReplies
+      type_in: [TEXT, ANIME_LIST, MANGA_LIST]
+      sort: ID_DESC
+    ) {
+      ... on TextActivity {
+        id
+        userId
+        type
+        replyCount
+        text
+        createdAt
+        user {
+          id
+          name
+          donatorTier
+          donatorBadge
+          avatar {
+            large
+          }
+        }
+        likes {
+          id
+          name
+          avatar {
+            large
+          }
+        }
+      }
+      ... on ListActivity {
+        id
+        userId
+        type
+        status
+        progress
+        replyCount
+        createdAt
+        user {
+          id
+          name
+          donatorTier
+          donatorBadge
+          avatar {
+            large
+          }
+        }
+        media {
+          id
+          type
+          status
+          isAdult
+          title {
+            userPreferred
+          }
+          coverImage {
+            large
+          }
+        }
+        likes {
+          id
+          name
+          avatar {
+            large
+          }
+        }
+      }
+    }
+  }
+}

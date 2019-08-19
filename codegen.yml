@@ -1,0 +1,23 @@
+schema: "./lib/gql/schema.json"
+documents: 
+- "./lib/gql/querys/FollowingQuery.gql"
+overwrite: true
+generates:
+  lib/gql/serializers.dart:
+    plugins:
+      - graphql-to-dart
+config:
+  scalars:
+    Date: DateTime
+    Datetime: PGDateTime
+    FiniteDatetime: DateTime
+    UUID: String
+    Rrule: RecurrenceRule
+    Cursor: String
+    MetricSpecification: Object
+    MetricValue: Object
+    Json: Object
+    FuzzyDateInt: Int
+    CountryCode: String
+  parts:
+  - "serializers.g.dart"

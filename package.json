@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "graphql": "^14.4.2",
+    "graphql-code-generator": "^0.18.2",
+    "graphql-to-dart": "0.1.2-alpha"
+  }
+}
