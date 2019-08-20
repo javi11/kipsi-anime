@@ -11,14 +11,15 @@
 ///      fonts:
 ///       - asset: fonts/Kipsi_anime.ttf
 ///
-/// 
+///
 ///
 import 'package:flutter/widgets.dart';
 
-class Kipsi_anime {
-  Kipsi_anime._();
+class KipsiAnime {
+  KipsiAnime._();
 
   static const _kFontFam = 'Kipsi_anime';
 
-  static const IconData anilist_icon = const IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData anilist_icon =
+      const IconData(0xe800, fontFamily: _kFontFam);
 }

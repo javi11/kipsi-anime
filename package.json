@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "gql-gen"
+  },
   "devDependencies": {
     "graphql": "^14.4.2",
     "graphql-code-generator": "^0.18.2",

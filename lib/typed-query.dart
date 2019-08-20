@@ -50,7 +50,7 @@ class TypedQuery<Data> extends StatelessWidget {
               data = dataFromJson(result.data);
             }
           } catch (error, stack) {
-            print('dataFromJson error when decoding result from ${gql}!');
+            print('dataFromJson error when decoding result from $gql}!');
             print(error);
             print(stack);
           }

@@ -109,7 +109,7 @@ class Authenticator {
   Future<Token> getStoredToken() async {
     String serialized = await storage.read(key: "token");
 
-    return json.decode(serialized);
+    return Token.fromJson(json.decode(serialized));
   }
 
   Future<bool> isExpired() async {

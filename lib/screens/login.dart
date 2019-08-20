@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                 RaisedButton.icon(
                   elevation: 12,
                   icon: Icon(
-                    Kipsi_anime.anilist_icon,
+                    KipsiAnime.anilist_icon,
                     size: 35,
                     color: Color(0xFF3399FF),
                   ),
