@@ -6,7 +6,7 @@ import 'package:kipsi_anime/services/oauth-client/models/token.dart';
 String uuidFromObject(Object object) {
   if (object is Map<String, Object>) {
     String typeName = object['__typename'] as String;
-    String id = object['id'] as String;
+    int id = object['id'] as int;
     if (typeName != null && id != null) {
       return [typeName, id].join('/');
     }

@@ -8,7 +8,7 @@ class FollowingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FollowingTypedQuery(
-      variables: FollowingVariables(isFollowing: true, page: 1),
+      variables: FollowingVariables(page: 1),
       builder: ({loading, error, data}) {
         if (error != null) {
           return Text(error.toString());

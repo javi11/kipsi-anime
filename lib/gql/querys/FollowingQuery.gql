@@ -1,9 +1,4 @@
-query Following(
-  $isFollowing: Boolean = true
-  $hasReplies: Boolean = false
-  $activityType: ActivityType
-  $page: Int
-) {
+query Following($hasReplies: Boolean = false, $page: Int) {
   Page(page: $page, perPage: 10) {
     pageInfo {
       total
@@ -13,12 +8,11 @@ query Following(
       hasNextPage
     }
     activities(
-      isFollowing: $isFollowing
-      type: $activityType
       hasRepliesOrTypeText: $hasReplies
       type_in: [TEXT, ANIME_LIST, MANGA_LIST]
       sort: ID_DESC
     ) {
+      __typename
       ... on TextActivity {
         id
         userId

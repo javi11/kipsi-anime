@@ -17,7 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  graphql_flutter: ^2.0.0
+  graphql_flutter: ^2.1.0
   fancy_bottom_navigation: ^0.3.2
   flutter_secure_storage: ^3.2.1+1
   json_annotation: ^3.0.0
