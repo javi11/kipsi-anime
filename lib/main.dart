@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:kipsi_anime/screens/home.dart';
-import 'package:kipsi_anime/screens/landing.dart';
-import 'package:kipsi_anime/screens/login.dart';
-import 'package:kipsi_anime/themes/kipsi.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(MyApp());
+import 'login/index.dart';
+import 'screens/home.dart';
+import 'themes/kipsi.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+void main() => runApp(App());
+
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kipsi Anime',
       theme: kipsiTheme,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => LandingPage(),
-        '/login': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
-      },
+      home: BlocProvider(
+        builder: (_) => LoginBloc(),
+        child: LoginPage(
+          child: HomePage(),
+        ),
+      ),
     );
   }
 }

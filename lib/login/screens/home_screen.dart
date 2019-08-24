@@ -1,30 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kipsi_anime/icons/kipsi_anime_icons.dart';
-import 'package:kipsi_anime/services/oauth-client/authenticator.dart';
-import 'package:kipsi_anime/services/oauth-client/models/token.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
+import '../../icons/kipsi_anime_icons.dart';
+import '../index.dart';
 
-class _LoginPageState extends State<LoginPage> {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    _login() async {
-      Token tokenResult = await Authenticator(context).getAccessToken(
-        "http://localhost:8080",
-        "https://anilist.co/api/v2/oauth/authorize?client_id=2432&redirect_uri=http://localhost:8080&response_type=code",
-        "https://anilist.co/api/v2/oauth/token",
-        "2432",
-        clientSecret: "sgTDhN8msA055dqzymzJ4gn1GDg09SmFn5FG6ijS",
-      );
-      if (tokenResult.accessToken.isNotEmpty) {
-        debugPrint(tokenResult.accessToken);
-        Navigator.of(context).pushReplacementNamed("/home");
-      }
-    }
-
+    final LoginBloc loginBloc = BlocProvider.of(context);
     return Scaffold(
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -50,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                     size: 35,
                     color: Color(0xFF3399FF),
                   ),
-                  onPressed: _login,
+                  onPressed: () => loginBloc.dispatch(LoadLoginEvent()),
                   label: Text('Login with anilist',
                       style: TextStyle(fontSize: 26)),
                 ),
