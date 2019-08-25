@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:kipsi_anime/screens/home.dart';
-import 'package:kipsi_anime/screens/landing.dart';
-import 'package:kipsi_anime/screens/login.dart';
-import 'package:kipsi_anime/themes/kipsi.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
-void main() => runApp(MyApp());
+import 'login/index.dart';
+import 'screens/home.dart';
+import 'services/api/client.dart';
+import 'themes/kipsi.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+void main() => runApp(App());
+
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kipsi Anime',
       theme: kipsiTheme,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => LandingPage(),
-        '/login': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
-      },
+      home: LoginProvider(
+        builder: (BuildContext context, String accessToken) {
+          return GraphQLProvider(
+            client: ValueNotifier(createClient(accessToken)),
+            child: HomePage(),
+          );
+        },
+      ),
     );
   }
 }
