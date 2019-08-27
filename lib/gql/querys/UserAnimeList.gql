@@ -1,0 +1,58 @@
+query ($userId: Int, $status: MediaListStatus, $page: Int = 1, $perPage:Int = 10) {
+    Page(page: $page, perPage:$perPage) {
+      mediaList(userId: $userId, userName: $userName, type: ANIME, status: $status) {
+        ...mediaListEntry
+      }
+    }
+}
+
+fragment mediaListEntry on MediaList {
+    id
+    mediaId
+    status
+    score
+    progress
+    progressVolumes
+    repeat
+    priority
+    private
+    hiddenFromStatusLists
+    customLists
+    advancedScores
+    notes
+    updatedAt
+    startedAt {
+        year
+        month
+        day
+    }
+    completedAt {
+        year
+        month
+        day
+    }
+    media {
+        id
+        title {
+            userPreferred
+        }
+        coverImage {
+            large
+        }
+        type
+        format
+        status
+        episodes
+        volumes
+        chapters
+        averageScore
+        popularity
+        isAdult
+        countryOfOrigin
+        startDate {
+            year
+            month
+            day
+        }
+    }
+}
